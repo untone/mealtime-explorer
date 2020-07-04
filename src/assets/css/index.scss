@@ -1,0 +1,18 @@
+$mq-breakpoints: (
+  mobile:  320px,
+  tablet:  740px,
+  desktop: 980px,
+  wide:    1300px
+);
+
+@import 'mq';
+@import 'vars';
+
+@mixin sans-serif {
+  font-family: sans-serif;
+
+  .wf-active & {
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+}
+
