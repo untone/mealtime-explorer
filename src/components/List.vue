@@ -96,13 +96,13 @@ export default {
             :key="index"
             :class="$style.item"
           >
-            <div :class="$style.wrapper" v-lazyload>
+            <figure :class="$style.wrapper" v-lazyload>
               <img
                 :class="$style.image"
                 :data-src="item.img"
                 :alt="item.name"
               >
-              <h2 :class="$style.name">{{ item.name }}</h2>
+              <figcaption :class="$style.name">{{ item.name }}</figcaption>
               <div
                 :class="$style.favourite"
                 @click="isFavourite(item) ? unsetFavourite($event, item) : setFavourite($event, item)">
@@ -111,7 +111,7 @@ export default {
                   :filled="isFavourite(item)"
                 />
               </div>
-            </div>
+            </figure>
           </li>
         </template>
       </template>
