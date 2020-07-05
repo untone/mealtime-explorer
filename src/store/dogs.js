@@ -22,16 +22,7 @@ const mutations = {
     state.progress = progress
   },
   SET_BREEDS (state, breeds) {
-    const groupped = breeds.reduce((accumulator, current) => {
-      const name = current[0]
-      if (!accumulator[name]) {
-        accumulator[name] = { name, items: [current] }
-      } else {
-        accumulator[name].items.push(current)
-      }
-      return accumulator
-    }, {})
-    state.breeds = Object.values(groupped)
+    state.breeds = breeds
   },
   SET_DOGS (state, dogs) {
     state.dogs = dogs
@@ -61,7 +52,16 @@ const actions = {
   async FETCH_BREEDS ({ commit }) {
     const response = await fetch(`${api}/breeds/list`)
     const { message } = await response.json()
-    commit('SET_BREEDS', message)
+    const groupped = message.reduce((accumulator, current) => {
+      const name = current[0]
+      if (!accumulator[name]) {
+        accumulator[name] = { name, items: [current] }
+      } else {
+        accumulator[name].items.push(current)
+      }
+      return accumulator
+    }, {})
+    commit('SET_BREEDS', Object.values(groupped))
   },
   async FETCH_DOGS ({ commit }, { params, append }) {
     commit('SET_PROGRESS', true)

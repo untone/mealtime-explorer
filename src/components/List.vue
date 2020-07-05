@@ -89,7 +89,7 @@ export default {
   <main :class="$style.content">
     <ul
       :class="$style.list"
-      :key="this.$route.path + this.sortByName">
+      :key="`${this.$route.path}${this.sortByName}`">
       <template v-if="displayList.length">
         <template v-for="(item, index) in displayList">
           <li
