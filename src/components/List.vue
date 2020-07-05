@@ -25,10 +25,7 @@ export default {
     },
     displayList () {
       if (this.sortByName) {
-        const sorted = [...this.currentList].sort((a, b) => {
-          return a.name.localeCompare(b.name)
-        })
-        return sorted
+        return = [...this.currentList].sort((a, b) => = a.name.localeCompare(b.name))
       }
       return this.currentList
     }
