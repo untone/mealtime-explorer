@@ -55,12 +55,6 @@ const mutations = {
   SET_SORT (state) {
     state.sortByName = !state.sortByName
   }
-  // SORT_DOGS (state) {
-  //   const sorted = state.dogs.sort((a, b) => {
-  //     return a.name.localeCompare(b.name)
-  //   })
-  //   state.sorted = sorted
-  // }
 }
 
 const actions = {

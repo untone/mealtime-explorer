@@ -49,12 +49,10 @@ export default {
     }
   },
   mounted () {
-    !this.isFavouritesRoute &&
-      window.addEventListener('scroll', this.setScrolledToBottom, { passive: true })
+    window.addEventListener('scroll', this.setScrolledToBottom, { passive: true })
   },
   beforeDestroy () {
-    !this.isFavouritesRoute &&
-      window.removeEventListener('scroll', this.setScrolledToBottom)
+    window.removeEventListener('scroll', this.setScrolledToBottom)
   },
   methods: {
     ...mapActions({
@@ -79,7 +77,9 @@ export default {
       return bottomOfPage || pageHeight < visible
     },
     setScrolledToBottom () {
-      this.bottom = this.scrolledToBottom()
+      if (!this.isFavouritesRoute) {
+        this.bottom = this.scrolledToBottom()
+      }
     }
   }
 }
@@ -116,14 +116,16 @@ export default {
         </template>
       </template>
     </ul>
-    <ul :class="[
-      $style.progress,
-      progress && $style.progressActive
-    ]">
-      <li :class="$style.tick"/>
-      <li :class="$style.tick"/>
-      <li :class="$style.tick"/>
-    </ul>
+    <template v-if="!this.isFavouritesRoute">
+      <ul :class="[
+        $style.progress,
+        progress && $style.progressActive
+      ]">
+        <li :class="$style.tick"/>
+        <li :class="$style.tick"/>
+        <li :class="$style.tick"/>
+      </ul>
+    </template>
   </main>
 </template>
 
