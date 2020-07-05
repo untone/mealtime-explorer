@@ -8,16 +8,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    component: Home,
-    meta: {
-      title: 'Пёсель',
-      page: 'Home',
-      display: true
-    }
-  },
-  {
-    path: '/:breed',
+    path: '/:breed?',
     component: Home,
     meta: {
       title: 'Пёсель',
@@ -35,7 +26,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (!store.state.dogs.breeds.length) {
-    store.dispatch('dogs/fetchBreeds')
+    store.dispatch('dogs/FETCH_BREEDS')
+  }
+  if (to.params.breed === 'favourites') {
+    store.dispatch('dogs/GET_FAVOURITES')
+  } else {
+    store.dispatch('dogs/FETCH_DOGS', { params: to.params })
   }
   next()
 })

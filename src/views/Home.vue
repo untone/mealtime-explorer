@@ -2,13 +2,15 @@
 import Header from '@/components/Header.vue'
 import Nav from '@/components/Nav.vue'
 import List from '@/components/List.vue'
+import ScrollTop from '@/components/ScrollTop.vue'
 
 export default {
   name: 'Home',
   components: {
     Header,
     Nav,
-    List
+    List,
+    ScrollTop
   }
 }
 </script>
@@ -18,5 +20,6 @@ export default {
     <Header />
     <Nav />
     <List />
+    <ScrollTop />
   </div>
 </template>

@@ -14,9 +14,7 @@ export default {
 
 <template>
   <div id="app">
-    <keep-alive>
-      <router-view/>
-    </keep-alive>
+    <router-view/>
   </div>
 </template>
 
@@ -30,6 +28,7 @@ html {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -47,5 +46,9 @@ body {
   @include mq($from: tablet) {
     padding-top: 100px;
   }
+}
+
+*:focus {
+  outline: none;
 }
 </style>

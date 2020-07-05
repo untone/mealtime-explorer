@@ -7,6 +7,14 @@ export default {
   components: {
     Logo,
     Heart
+  },
+  methods: {
+    scrollTop () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
   }
 }
 </script>
@@ -18,6 +26,7 @@ export default {
         to="/"
         :class="$style.logo"
         exact
+        @click.native="scrollTop"
       >
         <Logo />
       </router-link>
@@ -36,6 +45,7 @@ export default {
 <style lang="scss" module>
 .header {
   position: fixed;
+  z-index: 10;
   top: 0;
   right: 0;
   left: 0;

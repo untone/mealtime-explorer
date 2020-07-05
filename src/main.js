@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import WebFont from 'webfontloader'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import App from '@/App.vue'
+import router from '@/router'
+import store from '@/store'
+import LazyLoadDirective from '@/directives/LazyLoadDirective'
 
 Vue.config.productionTip = false
+
+Vue.directive('lazyload', LazyLoadDirective)
 
 WebFont.load({
   google: {
